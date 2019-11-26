@@ -2,7 +2,7 @@ args = {...}
 default_branch = "testing"
 key = "tmp"
 settings.set(key, shell.dir())
-settings.save()
+settings.save(".settings")
 shell.run("set")
 shell.setDir("/")
 if fs.exists("turtletools") then fs.delete("turtletools") end
@@ -11,6 +11,6 @@ fs.delete("install")
 fs.copy("turtletools/install.lua", "install")
 current_dir = settings.get(key)
 --settings.unset(key)
---settings.save()
+--settings.save(".settings")
 print(current_dir)
 shell.setDir(current_dir)
