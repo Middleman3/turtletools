@@ -1,14 +1,16 @@
 args = {...}
 default_branch = "testing"
-settings.set("_tmp_dir", shell.dir())
+key = "tmp"
+settings.set(key, shell.dir())
 settings.save()
+shell.run("set")
 shell.setDir("/")
 if fs.exists("turtletools") then fs.delete("turtletools") end
 shell.run("github clone Middleman3/turtletools -b " .. (args[1] or default_branch))
 fs.delete("install")
 fs.copy("turtletools/install.lua", "install")
-current_dir = settings.get("_tmp_dir")
---settings.unset("_tmp_dir")
+current_dir = settings.get(key)
+--settings.unset(key)
 --settings.save()
 print(current_dir)
 shell.setDir(current_dir)
