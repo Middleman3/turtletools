@@ -82,7 +82,7 @@ function turning_right()
     o_left()
     turtle.turnRight()
 end
-print("1")
+
 -- Directional
 function leftward(callback)
     return function ()
@@ -140,3 +140,4 @@ function placing(material_id)
         end
     end
 end
+print("1")
