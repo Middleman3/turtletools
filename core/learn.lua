@@ -107,7 +107,7 @@ function backward(callback)
         turning_right()
     end
 end
-
+print("1")
 -- Directional (Depreciated?)
 going_back = backward(going_forward())
 going_left = leftward(going_forward())
@@ -140,4 +140,3 @@ function placing(material_id)
         end
     end
 end
-print("1")
