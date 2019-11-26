@@ -5,5 +5,6 @@ print(current_dir)
 shell.setDir("/")
 if fs.exists("turtletools") then fs.delete("turtletools") end
 shell.run("github clone Middleman3/turtletools -b" .. (args[1] or default_branch))
+fs.copy(fs.find("install.lua"), "/")
 print(current_dir)
 shell.setDir(current_dir)
