@@ -107,15 +107,14 @@ function backward(callback)
         turning_right()
     end
 end
-print("1")
+
 -- Directional (Depreciated?)
 going_back = backward(going_forward)
 going_left = leftward(going_forward)
 going_right = rightward(going_forward)
 
-
 -- Interact
-print("2")
+
 function placingDown(material_id)
     return function()
         result = findMy(material_id)
@@ -124,7 +123,7 @@ function placingDown(material_id)
         end
     end
 end
-print("3")
+
 function placingUp(material_id)
     return function()
         result = findMy(material_id)
