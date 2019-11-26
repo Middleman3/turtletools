@@ -1,13 +1,13 @@
 
 
-successful = pcall(function () os.loadAPI("turtletools/connect/complain") end)
-if not successful then complain("cannot find " .. complain) end
+successful = os.loadAPI("turtletools/connect/complain")
+--if not successful then complain("cannot find " .. complain) end
 
-str_dir = shell.resolve("turtletools")
+str_dir = shell.dir()
 
 function load(path)
-    successful = pcall(function () os.loadAPI(path) end)
-    if not successful then complain("cannot find " .. path) end
+    successful = os.loadAPI(shell.resolve(path))
+    --if not successful then complain("cannot find " .. path) end
 end
 
 -- recursive depth first search
