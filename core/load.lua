@@ -1,6 +1,6 @@
 
 
-successful = os.loadAPI("turtletools/connect/complain")
+successful = os.loadAPI("turtletools/connect/log.lua")
 --if not successful then complain("cannot find " .. complain) end
 
 str_dir = shell.dir()

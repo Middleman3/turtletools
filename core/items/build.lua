@@ -1,31 +1,14 @@
 
-function placingDown(material_id)
-    return function()
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.placeDown()
-        end
+
+function flattening()
+    return function (width, length, height)
+        slicing = traversing_the(length, by(going_forward, rightward(traversing_the(width, going_forward()))))
+        go(traversing_the(height, by(going_down, slicing)))
+
+        go(by(traversing_the(height, going_up),
+                leftward(traversing_the(width, going_forward),
+                        backward(traversing_the(length, going_forward)))))
     end
-end
-function placingUp(material_id)
-    return function()
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.placeUp()
-        end
-    end
-end
-function placing(material_id)
-    return function()
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.place()
-        end
-    end
-end
-function flatten(width, length, height)
-    slicing = traversing_the(length, by(going_forward, rightward(traversing_the(width, going_forward()))))
-    go(traversing_the(height, by(going_down, slicing)))
 end
 function fence(fence_block, width, length, height)
     -- Walk from the center of a bottom side to the bottom left corner of fence
