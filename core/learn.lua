@@ -17,7 +17,7 @@ function determined(troubleshoot_cb, movement_cb)
     end
 end
 -- by as in 'via' or 'by means of' this given sequence of routines
-print("1")
+
 function by(...)
     return function()
         for i, funct in ipairs(arg) do funct() end
@@ -82,7 +82,7 @@ function turning_right()
     o_left()
     turtle.turnRight()
 end
-
+print("1")
 -- Directional
 function leftward(callback)
     return function ()
