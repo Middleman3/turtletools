@@ -109,9 +109,9 @@ function backward(callback)
 end
 print("1")
 -- Directional (Depreciated?)
-going_back = backward(going_forward())
-going_left = leftward(going_forward())
-going_right = rightward(going_forward())
+going_back = backward(going_forward)
+going_left = leftward(going_forward)
+going_right = rightward(going_forward)
 
 
 -- Interact
