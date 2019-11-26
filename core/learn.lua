@@ -7,10 +7,10 @@ function determined(troubleshoot_cb, movement_cb)
         successful, error_code = movement_cb()
         if not successful then -- Attempt to move, return if successful
             if not troubleshoot_cb(error_code) then
-                complain(error_code)
+                log.complain(error_code)
             else -- troubleshoot_cb worked
                 if not movement_cb() then
-                    complain("Unknown reason for inability to move!")
+                    log.complain("Unknown reason for inability to move!")
                 end
             end
         end
@@ -19,7 +19,7 @@ end
 -- by as in 'via' or 'by means of' this given sequence of routines
 function by(...)
     return function()
-        for i, funct in args do funct() end
+        for i, funct in ipairs(arg) do funct() end
     end
 end
 

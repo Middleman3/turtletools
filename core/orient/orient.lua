@@ -31,7 +31,7 @@ function indexOf(array, element)
   for i, v in ipairs(array) do
     if v == element then return i end
   end
-  complain("Direction attribute improperly set to " .. dir_str)
+  log.complain("Direction attribute improperly set to " .. dir_str)
 end
 
 -- Movement

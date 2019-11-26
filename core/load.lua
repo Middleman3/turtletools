@@ -1,13 +1,13 @@
 
 
 successful = os.loadAPI("turtletools/connect/log.lua")
---if not successful then complain("cannot find " .. complain) end
+if not successful then log.complain = print end
 
 str_dir = shell.dir()
 
 function load(path)
     successful = os.loadAPI(shell.resolve(path))
-    --if not successful then complain("cannot find " .. path) end
+    --if not successful then log.complain("cannot find " .. path) end
 end
 
 -- recursive depth first search

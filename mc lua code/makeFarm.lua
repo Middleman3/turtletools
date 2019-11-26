@@ -1,7 +1,7 @@
 successful = os.loadAPI("../orient/orient")
-if not successful then complain("cannot load orient.lua") end
+if not successful then log.complain("cannot load orient.lua") end
 successful = os.loadAPI("../steady")
-if not successful then complain("cannot load steady.lua") end
+if not successful then log.complain("cannot load steady.lua") end
 
 function trenches(length, count)
   for i=1, count do
