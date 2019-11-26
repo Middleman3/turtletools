@@ -23,7 +23,7 @@ function by(...)
         for i, funct in ipairs(arg) do funct() end
     end
 end
-print("2")
+
 function conditional(condition_cb, secondary_cb, primary_cb)
     return function()
         if condition_cb() then return primary_cb()
@@ -115,7 +115,7 @@ going_right = rightward(going_forward())
 
 
 -- Interact
-
+print("2")
 function placingDown(material_id)
     return function()
         result = findMy(material_id)
@@ -124,6 +124,7 @@ function placingDown(material_id)
         end
     end
 end
+print("3")
 function placingUp(material_id)
     return function()
         result = findMy(material_id)
