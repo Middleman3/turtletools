@@ -17,12 +17,13 @@ function determined(troubleshoot_cb, movement_cb)
     end
 end
 -- by as in 'via' or 'by means of' this given sequence of routines
+print("1")
 function by(...)
     return function()
         for i, funct in ipairs(arg) do funct() end
     end
 end
-
+print("2")
 function conditional(condition_cb, secondary_cb, primary_cb)
     return function()
         if condition_cb() then return primary_cb()

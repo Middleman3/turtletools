@@ -1,10 +1,10 @@
 successful = os.loadAPI("/turtletools/core/connect/log.lua")
 if not successful then log.complain = print end
 
-str_dir = "turtletools"
+str_dir = "turtletools/core"
 
 function load(path)
-    successful = os.loadAPI(shell.resolve(path))
+    successful = os.loadAPI(path)
     --if not successful then log.complain("cannot find " .. path) end
 end
 
