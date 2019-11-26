@@ -4,6 +4,7 @@ if not successful then log.complain = print end
 str_dir = "turtletools/core"
 
 function load(path)
+    print(path)
     successful = os.loadAPI(path)
     --if not successful then log.complain("cannot find " .. path) end
 end
