@@ -1,8 +1,9 @@
 
-
+-- From top left back corner, moves in a cube, breaking all blocks in its path,
+-- and returns back to starting place
 function flattening()
     return function (width, length, height)
-        slicing = traversing_the(length, by(going_forward, rightward(traversing_the(width, going_forward()))))
+        slicing = traversing_the(length, by(going_forward, rightward(traversing_the(width, going_forward))))
         go(traversing_the(height, by(going_down, slicing)))
 
         go(by(traversing_the(height, going_up),

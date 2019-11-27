@@ -17,9 +17,9 @@ function prepared_to(troubleshoot_cb, primary_cb)
                 if not successful then -- Attempt to move, return if successful
                     print("still didn't work... ")
                     return false, error_code
-                end
+                else return true end
             end
-        end
+        else return true end
     end
 end
 -- by as in 'via' or 'by means of' this given sequence of routines
@@ -31,6 +31,7 @@ function by(...)
             if not successful then return false, error_code end
             print("then I shall")
         end
+        return true
     end
 end
 
