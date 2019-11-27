@@ -4,18 +4,18 @@
     -- Logical
 function prepared_to(troubleshoot_cb, primary_cb)
     return function()
-        -- print("trying something")
+        -- log.info("trying something")
         local successful, error_code = primary_cb()
         if not successful then -- Attempt to move, return if successful
-            print("it didn't work, so trying to fix it")
+            log.info("it didn't work, so trying to fix it")
             if not troubleshoot_cb(error_code) then
                 log.complain(error_code)
-                print("couldn't fix it")
+                log.info("couldn't fix it")
             else -- troubleshoot_cb worked
-                print("I think I fixed it...")
+                log.info("I think I fixed it...")
                 successful, error_code = primary_cb()
                 if not successful then -- Attempt to move, return if successful
-                    print("still didn't work... ")
+                    log.complain("still didn't work... ")
                     return false, error_code
                 else return true end
             end
@@ -29,7 +29,7 @@ function by(...)
         for i, funct in ipairs(arg) do
             local successful, error_code = funct()
             if not successful then return false, error_code end
-            -- print("then I shall")
+            -- log.info("then I shall")
         end
         return true
     end
@@ -45,7 +45,7 @@ end
     -- Looping
 function traversing_the(count, primary_cb, transition_cb)
     return function()
-        -- print("time to traverse this thing")
+        -- log.info("time to traverse this thing")
         if count == 0 then return end
         local successful, error_code = primary_cb()
         if not successful then return false, error_code end
@@ -78,15 +78,15 @@ end
 
 function get_def_mv_trbst(dig_func)
     return function(error_code)
-        if not error_code then print("There's no error code")
-        else print("Hmmm... "..error_code) end
+        if not error_code then log.complain("There's no error code")
+        else log.info("Hmmm... "..error_code) end
         if error_code == "Movement obstructed" then return dig_func()
         elseif error_code == "Out of fuel" then return itemutils.refuel()
         else return false end
     end
 end
 function _make_default(move, dig, o_move)
-    --print("making a default function")
+    --log.info("making a default function")
     return prepared_to(get_def_mv_trbst(dig), by(move, o_move))
 end
 
@@ -108,7 +108,7 @@ end
 -- Directional
 function leftward(callback)
     return function ()
-        print("turning left")
+        --log.info("turning left")
         turning_left()
         callback()
         turning_right()
@@ -116,7 +116,7 @@ function leftward(callback)
 end
 function rightward(callback)
     return function ()
-        print("turning right")
+        --log.info("turning right")
         turning_right()
         callback()
         turning_left()
@@ -124,7 +124,7 @@ function rightward(callback)
 end
 function backward(callback)
     return function ()
-        print("turning around")
+        --log.info("turning around")
         turning_left()
         turning_left()
         callback()
@@ -145,7 +145,7 @@ function placingDown(id)
     if tonumber(id) then -- given inventory slot id
         return function()
             tmp = turtle.getSelectedSlot()
-            print("Placing down whatever's in slot " .. id)
+            log.info("Placing down whatever's in slot " .. id)
             turtle.select(orient.one_based_mod(tmp, 16))
             successful, error_code = turtle.placeDown()
             turtle.select(tmp)
@@ -155,11 +155,11 @@ function placingDown(id)
         return function()
             result = findMy(id)
             if result ~= -1 then
-                print("Placing ".. id .. " down")
+                log.info("Placing ".. id .. " down")
                 turtle.placeDown()
                 return true
             else
-                print("Out of " .. id)
+                log.complain("Out of " .. id)
                 return false, "Item not found"
             end
         end
@@ -170,7 +170,7 @@ function placingUp(id)
     if tonumber(id) then -- given inventory slot id
         return function()
             tmp = turtle.getSelectedSlot()
-            print("Placing down whatever's in slot " .. id)
+            log.info("Placing down whatever's in slot " .. id)
             turtle.select(orient.one_based_mod(tmp, 16))
             successful, error_code = turtle.placeUp()
             turtle.select(tmp)
@@ -180,11 +180,11 @@ function placingUp(id)
         return function()
             result = findMy(id)
             if result ~= -1 then
-                print("Placing ".. id .. " down")
+                log.info("Placing ".. id .. " down")
                 turtle.placeUp()
                 return true
             else
-                print("Out of " .. id)
+                log.complain("Out of " .. id)
                 return false, "Item not found"
             end
         end
@@ -195,7 +195,7 @@ function placing(id)
     if tonumber(id) then -- given inventory slot id
         return function()
             tmp = turtle.getSelectedSlot()
-            print("Placing down whatever's in slot " .. id)
+            log.info("Placing down whatever's in slot " .. id)
             turtle.select(orient.one_based_mod(tmp, 16))
             successful, error_code = turtle.place()
             turtle.select(tmp)
@@ -205,11 +205,11 @@ function placing(id)
         return function()
             result = findMy(id)
             if result ~= -1 then
-                print("Placing ".. id .. " down")
+                log.info("Placing ".. id .. " down")
                 turtle.place()
                 return true
             else
-                print("Out of " .. id)
+                log.complain("Out of " .. id)
                 return false, "Item not found"
             end
         end

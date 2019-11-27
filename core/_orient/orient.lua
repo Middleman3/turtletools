@@ -1,20 +1,16 @@
 SETTINGS_PATH = ".settings"
 
 function query_coords()
-  print("what's my x coordinate?")
-  x  = tonumber(read())
-  print("what's my y coordinate?")
-  y  = tonumber(read())
-  print("what's my z coordinate?")
-  z  = tonumber(read())
+  x  = tonumber(log.query("what's my x coordinate?"))
+  y  = tonumber(log.query("what's my y coordinate?"))
+  z  = tonumber(log.query("what's my z coordinate?"))
   vec = vector:new(x, y, z)
   settings.set("H", vec:tostring())
   settings.save(SETTINGS_PATH)
 end
 
 function query_direction()
-  print("which direction am I facing? (north, south, east, west)")
-  settings.set("D", read())
+  settings.set("D", log.query("which direction am I facing? (north, south, east, west)"))
   settings.save(SETTINGS_PATH)
 end
 
@@ -69,7 +65,7 @@ end
 function turn_helper(num)
   dir_str = getD()
   if not dir_str then
-    print("corrupted settings")
+    log.complain("corrupted settings")
     return false, "corrupted settings"
   end
   dir = indexOf(compass, dir_str)
@@ -119,8 +115,3 @@ end
 function report()
   return "at " .. settings.get("H") .. " facing " .. getD()
 end
---args = {...}
---setD(args[1])
---home = vector.new(args[2], args[3], args[4])
---setH(home)
---print("At "..args[2].." "..args[3].." "..args[4].." facing "..args[1])
