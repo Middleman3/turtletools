@@ -1,4 +1,4 @@
-SETTINGS_PATH = "turtletools/.tt_settings"
+SETTINGS_PATH = ".settings"
 
 function query_coords()
   print("what's my x coordinate?")
