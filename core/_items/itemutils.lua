@@ -59,6 +59,7 @@ function findMy(itemID)
   turtle.select(tmp)
   return -1
 end
+
 function findAny(itemIDs)
   for i, itemID in ipairs(itemIDs) do
     local index = findMy(itemID)

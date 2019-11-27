@@ -141,31 +141,79 @@ going_right = rightward(going_forward)
 
 -- Interact
 
-function placingDown(material_id)
-    return function()
-        print("Placing ".. material_id.. " down")
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.placeDown()
+function placingDown(id)
+    if not id then return turtle.placeDown end
+    if tonumber(id) then -- given inventory slot id
+        return function()
+            tmp = turtle.getSelectedSlot()
+            print("Placing down whatever's in slot " .. id)
+            turtle.select(orient.one_based_mod(tmp, 16))
+            successful, error_code = turtle.placeDown()
+            turtle.select(tmp)
+            return successful, error_code
+        end
+    else -- given block id
+        return function()
+            result = findMy(id)
+            if result ~= -1 then
+                print("Placing ".. id .. " down")
+                turtle.placeDown()
+                return true
+            else
+                print("Out of " .. id)
+                return false, "Item not found"
+            end
+        end
+    end
+end
+function placingUp(id)
+    if not id then return turtle.placeUp end
+    if tonumber(id) then -- given inventory slot id
+        return function()
+            tmp = turtle.getSelectedSlot()
+            print("Placing down whatever's in slot " .. id)
+            turtle.select(orient.one_based_mod(tmp, 16))
+            successful, error_code = turtle.placeUp()
+            turtle.select(tmp)
+            return successful, error_code
+        end
+    else -- given block id
+        return function()
+            result = findMy(id)
+            if result ~= -1 then
+                print("Placing ".. id .. " down")
+                turtle.placeUp()
+                return true
+            else
+                print("Out of " .. id)
+                return false, "Item not found"
+            end
+        end
+    end
+end
+function placing(id)
+    if not id then return turtle.place end
+    if tonumber(id) then -- given inventory slot id
+        return function()
+            tmp = turtle.getSelectedSlot()
+            print("Placing down whatever's in slot " .. id)
+            turtle.select(orient.one_based_mod(tmp, 16))
+            successful, error_code = turtle.place()
+            turtle.select(tmp)
+            return successful, error_code
+        end
+    else -- given block id
+        return function()
+            result = findMy(id)
+            if result ~= -1 then
+                print("Placing ".. id .. " down")
+                turtle.place()
+                return true
+            else
+                print("Out of " .. id)
+                return false, "Item not found"
+            end
         end
     end
 end
 
-function placingUp(material_id)
-    return function()
-        print("Placing ".. material_id.. " up")
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.placeUp()
-        end
-    end
-end
-function placing(material_id)
-    return function()
-        print("Placing ".. material_id.. " in front of me")
-        result = findMy(material_id)
-        if not result == -1 then
-            turtle.place()
-        end
-    end
-end
