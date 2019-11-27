@@ -46,8 +46,8 @@ end
 
 -- the two following methods return the index of the previously selected slot
 function findMy(itemID)
-  if imHolding(itemID) then return end
   local tmp = turtle.getSelectedSlot()
+  if imHolding(itemID) then return tmp end
   for i=1, 16 do
     turtle.select(i)
     if imHolding(itemID) then return i end
