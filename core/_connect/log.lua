@@ -8,7 +8,7 @@ end
 
 complain = function (message, detail)
     term.setTextColor(colors.orange)
-    info(message)
+    print(message)
     if detail then info(detail) end
     term.setTextColor(colors.white)
 end
