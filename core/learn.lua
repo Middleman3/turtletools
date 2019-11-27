@@ -35,12 +35,14 @@ function by(...)
     end
 end
 
-function provided(condition_cb, secondary_cb, primary_cb)
+function provided(condition_cb, primary_cb, secondary_cb)
+    secondary_cb = secondary_cb or function() return true end
     return function()
         if condition_cb() then return primary_cb()
-        else return secondary_cb end
+        else return secondary_cb() end
     end
 end
+
     -- Looping
 function traversing_the(count, primary_cb, transition_cb)
     return function()
