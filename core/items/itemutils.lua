@@ -1,7 +1,7 @@
-fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "ic2:itemScrap"}
+fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "ic2:crafting"}
 
 function identify(index)
-  return turtle.getItemDetail().name
+  return turtle.getItemDetail()
 end
 
 function getInventory()
