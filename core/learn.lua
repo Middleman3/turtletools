@@ -70,7 +70,7 @@ function as_long_as(condition_cb, primary_cb)
 end
 
 function go(callback, ...)
-    return callback(unpack(args))
+    return callback(unpack(arg))
 end
 
 -- Movement
