@@ -68,7 +68,10 @@ end
 -- Movement
 function turn_helper(num)
   dir_str = getD()
-  if not dir_str then return false, "corrupted settings" end
+  if not dir_str then
+    print("corrupted settings")
+    return false, "corrupted settings"
+  end
   dir = indexOf(compass, dir_str)
   new_dir = dir + num
   one_based_modulus(new_dir, 4) -- wrap around (4 directions)

@@ -86,7 +86,7 @@ function get_def_mv_trbst(dig_func)
     end
 end
 function _make_default(move, dig, o_move)
-    print("making a default function")
+    --print("making a default function")
     return prepared_to(get_def_mv_trbst(dig), by(move, o_move))
 end
 
@@ -94,7 +94,6 @@ end
 going_up = _make_default(turtle.up, turtle.digUp, orient.up)
 going_forward = _make_default(turtle.forward, turtle.dig, orient.forward)
 going_down =_make_default(turtle.down, turtle.digDown, orient.down)
-extra_stuff = "at least Im here..."
 
 -- Facing
 function turning_left()
@@ -102,7 +101,7 @@ function turning_left()
     turtle.turnLeft()
 end
 function turning_right()
-    orient.left()
+    orient.right()
     turtle.turnRight()
 end
 
@@ -134,7 +133,7 @@ function backward(callback)
     end
 end
 
--- Directional (Depreciated?)
+-- Directional
 going_back = backward(going_forward)
 going_left = leftward(going_forward)
 going_right = rightward(going_forward)
