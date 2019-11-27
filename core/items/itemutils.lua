@@ -1,7 +1,7 @@
 fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "IC2:itemScrap"}
 
 function getInventory()
-  local tmp = turtle.getSelectedSLots()
+  local tmp = turtle.getSelectedSlot()
   local inventory = {}
   for i=1, 16  do 
     turtle.select(i)
@@ -28,7 +28,7 @@ function imHolding(itemID)
   end
 end
 function slotList()
-  local tmp = turtle.getSelectedSLots()
+  local tmp = turtle.getSelectedSlot()
   local inv = {}
   for i=1, 16 do
     turtle.select(i)
@@ -47,7 +47,7 @@ end
 -- the two following methods return the index of the previously selected slot
 function findMy(itemID)
   if imHolding(itemID) then return end
-  local tmp = turtle.getSelectedSLots()
+  local tmp = turtle.getSelectedSlot()
   for i=1, 16 do
     turtle.select(i)
     if imHolding(itemID) then return tmp end
