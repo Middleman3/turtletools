@@ -22,5 +22,5 @@ function spill(package)
     for symbol, value in pairs(package) do
         _G[symbol] = value
     end
-    table.remove(_G, package)
+    _G[package] = nil
 end
