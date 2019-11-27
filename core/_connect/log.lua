@@ -1,18 +1,16 @@
 SETTINGS_PATH = ".settings"
 info = function(message, detail)
-    tmp = term.getTextColor()
     term.setTextColor(colors.lightBlue)
     print(message)
     if detail then info(detail) end
-    term.setTextColor(tmp)
+    term.setTextColor(color.white)
 end
 
 complain = function (message, detail)
-    tmp = term.getTextColor()
     term.setTextColor(colors.orange)
     info(message)
     if detail then info(detail) end
-    term.setTextColor(tmp)
+    term.setTextColor(color.white)
 end
 
 query = function(question)
