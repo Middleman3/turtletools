@@ -25,8 +25,9 @@ end
 function by(...)
     return function()
         for i, funct in ipairs(arg) do
+            funct()
             print("then I shall")
-            funct() end
+        end
     end
 end
 
