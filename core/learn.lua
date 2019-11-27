@@ -65,6 +65,7 @@ function get_def_mv_trbst(dig_func)
     end
 end
 function _make_default(move, dig, o_move)
+    print("making a default function")
     return determined(by(move, o_move), get_def_mv_trbst(dig))
 end
 
