@@ -77,7 +77,7 @@ function get_def_mv_trbst(dig_func)
         if not error_code then print("There's no error code")
         else print("Hmmm... "..error_code) end
         if error_code == "Movement obstructed" then return dig_func()
-        elseif error_code == "Out of fuel" then return refuel()
+        elseif error_code == "Out of fuel" then return itemutils.refuel()
         else return false end
     end
 end

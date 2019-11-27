@@ -1,14 +1,14 @@
 fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "IC2:itemScrap"}
 
 function getInventory()
-  tmp = turtle.getSelectedSLots()
-  inventory = {}
+  local tmp = turtle.getSelectedSLots()
+  local inventory = {}
   for i=1, 16  do 
     turtle.select(i)
-    slotInfo = turtle.getItemDetail()
-    if slotInfo ~= nil then 
-      name = slotInfo["name"]
-      count = slotInfo.count
+    local slotInfo = turtle.getItemDetail()
+    if slotInfo ~= nil then
+      local name = slotInfo["name"]
+      local count = slotInfo.count
       if inventory[name] == nil then
         inventory[name] = count
       else
@@ -21,20 +21,20 @@ function getInventory()
   return inventory 
 end
 function imHolding(itemID)
-  slotInfo = turtle.getItemDetail()
+  local slotInfo = turtle.getItemDetail()
   if slotInfo ~= nil then
-    itemName = slotInfo["name"]
+    local itemName = slotInfo["name"]
     return itemID == itemName
   end
 end
 function slotList()
-  tmp = turtle.getSelectedSLots()
-  inv = {}
+  local tmp = turtle.getSelectedSLots()
+  local inv = {}
   for i=1, 16 do
     turtle.select(i)
-    slotInfo = turtle.getItemDetail()
+    local slotInfo = turtle.getItemDetail()
     if slotInfo ~= nil then
-      itemName = slotInfo["name"]
+      local itemName = slotInfo["name"]
       inv[i] = itemName..": "..turtle.getItemCount()
     else
       inv[i] = "Empty"
@@ -47,7 +47,7 @@ end
 -- the two following methods return the index of the previously selected slot
 function findMy(itemID)
   if imHolding(itemID) then return end
-  tmp = turtle.getSelectedSLots()
+  local tmp = turtle.getSelectedSLots()
   for i=1, 16 do
     turtle.select(i)
     if imHolding(itemID) then return tmp end
@@ -57,15 +57,15 @@ function findMy(itemID)
 end
 function findAny(itemIDs)
   for i, itemID in ipairs(itemIDs) do
-    index = findMy(itemID)
+    local index = findMy(itemID)
     if index > 0 then return index end
   end
   return -1
 end
 
 function refuel()
-  tmp = turtle.getSelectedSlots()
-  index = findMy(fuelTypes)
+  local tmp = turtle.getSelectedSlots()
+  local index = findMy(fuelTypes)
   if index == -1 then return false end
   turtle.select(index)
   turtle.refuel(1)
