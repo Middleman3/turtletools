@@ -20,7 +20,7 @@ end
 -- spills elements of this package into _G, so package.element -> element
 function spill(package)
     for symbol, value in pairs(package) do
-        table.insert(_G, symbol, value)
+        _G[symbol] = value
     end
     table.remove(_G, package)
 end
