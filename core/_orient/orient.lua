@@ -21,12 +21,19 @@ end
 function init()
   settings.load(SETTINGS_PATH)
   if not settings.get("H") then query_coords() end
-  if not settings.get("D") then query_direction() end
+  if not getD() then query_direction() end
 end
 
 init()
-
 -- sync with persistence
+function getH()
+  H = settings.get("H")
+  x, y, z = string.match(H, "(.?%d+),(.?%d+),(.?%d+)")
+  return vector.new(x, y, z)
+end
+function getD()
+  return settings.get("D")
+end
 function setD (direction)
   settings.set("D", direction)
   settings.save(SETTINGS_PATH)
@@ -34,11 +41,6 @@ end
 function setH(vectorToHome)
   settings.set("H", vectorToHome:tostring())
   settings.save(SETTINGS_PATH)
-end
-function getH()
-  H = settings.get("H")
-  x, y, z = string.match(H, "(.?%d+),(.?%d+),(.?%d+)")
-  return vector.new(x, y, z)  
 end
 
 -- map directions
@@ -64,7 +66,7 @@ end
 
 -- Movement
 function turn_helper(num)
-  dir_str = settings.get("D")
+  dir_str = getD()
   if not dir_str then return false, "corrupted settings" end
   dir = indexOf(compass, dir_str)
   new_dir = dir + num
@@ -111,7 +113,7 @@ function back()
   return true
 end
 function report()
-  return "at " .. settings.get("H") .. " facing " .. settings.get("D")
+  return "at " .. settings.get("H") .. " facing " .. getD()
 end
 --args = {...}
 --setD(args[1])
