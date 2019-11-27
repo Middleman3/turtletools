@@ -5,7 +5,7 @@
 function prepared_to(troubleshoot_cb, primary_cb)
     return function()
         print("trying something")
-        successful, error_code = primary_cb()
+        local successful, error_code = primary_cb()
         if not successful then -- Attempt to move, return if successful
             print("it didn't work, so trying to fix it")
             if not troubleshoot_cb(error_code) then
@@ -13,8 +13,10 @@ function prepared_to(troubleshoot_cb, primary_cb)
                 log.complain(error_code)
             else -- troubleshoot_cb worked
                 print("I think I fixed it...")
-                if not primary_cb() then
+                successful, error_code = primary_cb()
+                if not successful then -- Attempt to move, return if successful
                     print("still didn't work... ")
+                    return false, error_code
                 end
             end
         end
@@ -25,7 +27,8 @@ end
 function by(...)
     return function()
         for i, funct in ipairs(arg) do
-            funct()
+            local successful, error_code = funct()
+            if not successful then return false, error_code end
             print("then I shall")
         end
     end
@@ -42,10 +45,13 @@ function traversing_the(count, primary_cb, transition_cb)
     return function()
         print("time to traverse this thing")
         if count == 0 then return end
-        if not primary_cb() then return false end
+        local successful, error_code = primary_cb()
+        if not successful then return false, error_code end
         for i=0, count - 1 do
-            if not transition_cb() then return false end
-            if not primary_cb() then return false end
+            successful, error_code = transition_cb()
+            if not successful then return false, error_code end
+            successful, error_code = primary_cb()
+            if not successful then return false, error_code end
         end
         return true
     end
@@ -53,7 +59,8 @@ end
 function as_long_as(condition_cb, primary_cb)
     return function ()
         while condition_cb() do
-            if not primary_cb() then return false end
+            local successful, error_code = primary_cb()
+            if not successful then return false, error_code end
         end
         return true
     end
