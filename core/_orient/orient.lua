@@ -1,6 +1,27 @@
 SETTINGS_PATH = "turtletools/.tt_settings"
 settings.load(SETTINGS_PATH)
 
+function query_coords()
+  print("what's my x coordinate?")
+  x  = tonumber(read())
+  print("what's my y coordinate?")
+  y  = tonumber(read())
+  print("what's my z coordinate?")
+  z  = tonumber(read())
+  vec = vector:new(x, y, z)
+  settings.set("H", vec:tostring())
+  settings.save(SETTINGS_PATH)
+end
+
+function query_direction()
+  print("which direction am I facing? (north, south, east, west)")
+  settings.set("H", read())
+  settings.save(SETTINGS_PATH)
+end
+
+if not settings.get("H") then query_coords() end
+if not settings.get("D") then query_direction() end
+
 -- sync with persistence
 function setD (direction)
   settings.set("D", direction)
