@@ -29,6 +29,7 @@ function get_modem_side()
     m = settings.get("modem_side")
     if m then return m end
     complain("corrupted settings, no modem_side")
+    return false
 end
 
 function init()
