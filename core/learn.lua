@@ -42,7 +42,6 @@ function provided(condition_cb, primary_cb, secondary_cb)
         else return secondary_cb() end
     end
 end
-
     -- Looping
 function traversing_the(count, primary_cb, transition_cb)
     return function()
@@ -51,8 +50,10 @@ function traversing_the(count, primary_cb, transition_cb)
         local successful, error_code = primary_cb()
         if not successful then return false, error_code end
         for i=0, count - 1 do
-            successful, error_code = transition_cb()
-            if not successful then return false, error_code end
+            if transition_cb then
+                successful, error_code = transition_cb()
+                if not successful then return false, error_code end
+            end
             successful, error_code = primary_cb()
             if not successful then return false, error_code end
         end
