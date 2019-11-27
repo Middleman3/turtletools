@@ -2,7 +2,7 @@
 -- Steady
 
     -- Logical
-function determined(troubleshoot_cb, primary_cb)
+function prepared_to(troubleshoot_cb, primary_cb)
     return function()
         print("trying something")
         successful, error_code = primary_cb()
@@ -30,7 +30,7 @@ function by(...)
     end
 end
 
-function conditional(condition_cb, secondary_cb, primary_cb)
+function provided(condition_cb, secondary_cb, primary_cb)
     return function()
         if condition_cb() then return primary_cb()
         else return secondary_cb end
@@ -49,7 +49,7 @@ function traversing_the(count, primary_cb, transition_cb)
         return true
     end
 end
-function continual(condition_cb, primary_cb)
+function as_long_as(condition_cb, primary_cb)
     return function ()
         while condition_cb() do
             if not primary_cb() then return false end
@@ -75,7 +75,7 @@ function get_def_mv_trbst(dig_func)
 end
 function _make_default(move, dig, o_move)
     print("making a default function")
-    return determined(by(move, o_move), get_def_mv_trbst(dig))
+    return prepared_to(get_def_mv_trbst(dig), by(move, o_move))
 end
 
 -- Primaries
