@@ -1,9 +1,15 @@
 SETTINGS_PATH = ".settings"
-info = function(message, detail)
-    term.setTextColor(colors.lightBlue)
-    print(message)
-    if detail then info(detail) end
+
+function colored(color, saying)
+    term.setTextColor(colors[color])
+    saying()
     term.setTextColor(colors.white)
+end
+
+saying = function(...)
+    return function ()
+        print(...)
+    end
 end
 
 complain = function (message, detail)
