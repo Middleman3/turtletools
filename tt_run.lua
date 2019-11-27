@@ -10,6 +10,9 @@ if  table.getn(args) == 0 then print("Usage: trun <program> <args>") end
 os.loadAPI("/turtletools/import.lua")
 import.load_dir("turtletools/core")
 
+-- Spill modules
+import.spill(learn)
+
 print("\nSearching for " .. rel_prog)
 abs_prog = "/"..shell.resolve(rel_prog)
 print("Running "..abs_prog)

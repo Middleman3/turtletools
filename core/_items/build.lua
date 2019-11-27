@@ -13,7 +13,7 @@ function in_a_retractive_square (outer_moving, inner_moving, outer_length, inner
     return gradually(outer_moving, outer_length, retractively(inner_moving, inner_length, acting))
 end
 
-function in_a_zigzag_square(moving, zig, turning, zag, acting)
+function in_a_zigzag_square(zig, turning, zag, acting)
     local turn_around = by(turning, going_forward, turning)
     local turning_other_way = by(turning, turning, turning, going_forward, turning, turning, turning)
     local i = 0
@@ -22,7 +22,7 @@ function in_a_zigzag_square(moving, zig, turning, zag, acting)
         i = i + 1
         return odd
     end
-    return traversing_the(zag, gradually(moving, zig, acting),
+    return traversing_the(zag, gradually(going_forward, zig, acting),
             provided(im_coming_back, turning_other_way, turn_around))
 end
 
