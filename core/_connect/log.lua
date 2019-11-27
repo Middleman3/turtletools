@@ -21,7 +21,7 @@ query = function(question)
 end
 
 function query_modem_side()
-    settings.set("D", query("Which side is my modem on? (top, bottom, left, right, back)"))
+    settings.set("modem_side", query("Which side is my modem on? (top, bottom, left, right, back)"))
     settings.save(SETTINGS_PATH)
 end
 
