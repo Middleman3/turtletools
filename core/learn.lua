@@ -4,7 +4,7 @@
     -- Logical
 function prepared_to(troubleshoot_cb, primary_cb)
     return function()
-        print("trying something")
+        -- print("trying something")
         local successful, error_code = primary_cb()
         if not successful then -- Attempt to move, return if successful
             print("it didn't work, so trying to fix it")
@@ -45,7 +45,7 @@ end
     -- Looping
 function traversing_the(count, primary_cb, transition_cb)
     return function()
-        print("time to traverse this thing")
+        -- print("time to traverse this thing")
         if count == 0 then return end
         local successful, error_code = primary_cb()
         if not successful then return false, error_code end
