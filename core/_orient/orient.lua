@@ -60,6 +60,7 @@ function one_based_modulus(dividend, divisor)
 end
 function indexOf(array, element)
   for i, v in ipairs(array) do
+    print("comparing " .. v .. " & " .. element)
     if v == element then return i end
   end
   log.complain("Direction attribute improperly set to " .. dir_str)
@@ -72,9 +73,6 @@ function turn_helper(num)
     print("corrupted settings")
     return false, "corrupted settings"
   end
-  print("I got here")
-  debug.debug()
-  print("but I did not stop")
   dir = indexOf(compass, dir_str)
   new_dir = dir + num
   one_based_modulus(new_dir, 4) -- wrap around (4 directions)
