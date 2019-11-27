@@ -5,11 +5,12 @@ compile_path = "/turtletools/compile"
 settings_path = "turtletools/.tt_settings"
 tester = "it still works!"
 
-if #args == 0 then print("Usage: trun <program> <args>") end
+if  table.getn(args) == 0 then print("Usage: trun <program> <args>") end
 
 -- Compile
 os.loadAPI("/turtletools/import.lua")
 import.load_dir("turtletools/core")
+going_forward()
 
 print("\nSearching for " .. rel_prog)
 abs_prog = "/"..shell.resolve(rel_prog)
