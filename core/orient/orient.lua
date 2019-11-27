@@ -46,25 +46,25 @@ function turn_helper(num)
   return true
 end
 
-function o_right()
+function right()
   return turn_helper(1)
 end
-function o_left()
+function left()
   return turn_helper(-1)
 end
-function o_up()
+function up()
   H = getH()
   if not H then return false, "corrupted settings" end
   setH(H:add(vector.new(0, 1, 0)))
   return true
 end
-function o_down()
+function down()
   H = getH()
   if not H then return false, "corrupted settings" end
   setH(H:add(vector.new(0, -1, 0)))
   return true
 end
-function o_forward()
+function forward()
   D = getD()
   H = getH()
   if not D then return false, "corrupted settings" end
@@ -73,7 +73,7 @@ function o_forward()
   setH(H:add(dir_vector))
   return true
 end
-function o_back()
+function back()
   D = getD()
   H = getH()
   if not D then return false, "corrupted settings" end
@@ -82,7 +82,7 @@ function o_back()
   setH(H:sub(dir_vector))
   return true
 end
-function o_report()
+function report()
   return "at " .. settings.get("H") .. " facing " .. settings.get("D")
 end
 --args = {...}

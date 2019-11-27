@@ -87,18 +87,18 @@ function _make_default(move, dig, o_move)
 end
 
 -- Primaries
-going_up = _make_default(turtle.up, turtle.digUp, o_up)
-going_forward = _make_default(turtle.forward, turtle.dig, o_forward)
-going_down =_make_default(turtle.down, turtle.digDown, o_down)
+going_up = _make_default(turtle.up, turtle.digUp, orient.up)
+going_forward = _make_default(turtle.forward, turtle.dig, orient.forward)
+going_down =_make_default(turtle.down, turtle.digDown, orient.down)
 extra_stuff = "at least Im here..."
 
 -- Facing
 function turning_left()
-    o_left()
+    orient.left()
     turtle.turnLeft()
 end
 function turning_right()
-    o_left()
+    orient.left()
     turtle.turnRight()
 end
 
