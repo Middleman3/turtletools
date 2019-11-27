@@ -1,3 +1,4 @@
+SETTINGS_PATH = "turtletools/.tt_settings"
 settings.load(SETTINGS_PATH)
 
 -- sync with persistence
