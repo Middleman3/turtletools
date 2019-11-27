@@ -13,4 +13,4 @@ import.load_dir("turtletools/core")
 print("\nSearching for " .. rel_prog)
 abs_prog = "/"..shell.resolve(rel_prog)
 print("Running "..abs_prog)
-if not os.run(_G, abs_prog, unpack(args)) then error("Execution failed.") end
+if not shell.run(abs_prog, unpack(args)) then error("Execution failed.") end
