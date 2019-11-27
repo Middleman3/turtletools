@@ -1,5 +1,12 @@
 SETTINGS_PATH = ".settings"
-info = print
+info = function()
+    tmp = term.getTextColor()
+    term.setTextColor(colors.lightBlue)
+    print(message)
+    if detail then info(detail) end
+    term.setTextColor(tmp)
+end
+
 complain = function (message, detail)
     tmp = term.getTextColor()
     term.setTextColor(colors.orange)
