@@ -16,7 +16,7 @@ complain = function (message, detail)
 end
 
 query = function(question)
-    info(message)
+    info(question)
     return read()
 end
 
