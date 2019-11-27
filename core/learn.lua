@@ -29,7 +29,7 @@ function by(...)
         for i, funct in ipairs(arg) do
             local successful, error_code = funct()
             if not successful then return false, error_code end
-            print("then I shall")
+            -- print("then I shall")
         end
         return true
     end
