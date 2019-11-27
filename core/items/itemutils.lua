@@ -1,4 +1,8 @@
-fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "IC2:itemScrap"}
+fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "ic2:itemScrap"}
+
+function identify(index)
+  return turtle.getItemDetail().name
+end
 
 function getInventory()
   local tmp = turtle.getSelectedSlot()
@@ -66,8 +70,9 @@ end
 function refuel()
   local tmp = turtle.getSelectedSlot()
   local index = findAny(fuelTypes)
-  if index == -1 then return false end
+  if index == -1 then return false, "Out of fuel" end
   turtle.select(index)
   turtle.refuel(1)
   turtle.select(tmp)
+  return true
 end

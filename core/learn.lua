@@ -9,8 +9,8 @@ function prepared_to(troubleshoot_cb, primary_cb)
         if not successful then -- Attempt to move, return if successful
             print("it didn't work, so trying to fix it")
             if not troubleshoot_cb(error_code) then
-                print("couldn't fix it")
                 log.complain(error_code)
+                print("couldn't fix it")
             else -- troubleshoot_cb worked
                 print("I think I fixed it...")
                 successful, error_code = primary_cb()
