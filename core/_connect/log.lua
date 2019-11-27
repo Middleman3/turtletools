@@ -3,14 +3,14 @@ info = function(message, detail)
     term.setTextColor(colors.lightBlue)
     print(message)
     if detail then info(detail) end
-    term.setTextColor(color.white)
+    term.setTextColor(colors.white)
 end
 
 complain = function (message, detail)
     term.setTextColor(colors.orange)
     info(message)
     if detail then info(detail) end
-    term.setTextColor(color.white)
+    term.setTextColor(colors.white)
 end
 
 query = function(question)
