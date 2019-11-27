@@ -11,7 +11,6 @@ if  table.getn(args) == 0 then print("Usage: trun <program> <args>") end
 os.loadAPI("/turtletools/import.lua")
 import.load_dir("turtletools/core")
 print(1)
-learn.going_forward()
 print(extra_stuff)
 print(2)
 print("\nSearching for " .. rel_prog)
