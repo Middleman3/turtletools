@@ -1,5 +1,5 @@
 SETTINGS_PATH = ".settings"
-info = function()
+info = function(message, detail)
     tmp = term.getTextColor()
     term.setTextColor(colors.lightBlue)
     print(message)
@@ -29,7 +29,7 @@ function get_modem_side()
     m = settings.get("modem_side")
     if m then return m end
     complain("corrupted settings, no modem_side")
-    return false
+    return nil
 end
 
 function init()
