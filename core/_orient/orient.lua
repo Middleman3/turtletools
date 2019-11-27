@@ -75,6 +75,7 @@ function turn_helper(num)
   end
   dir = indexOf(compass, dir_str)
   new_dir = dir + num
+  print("new dir = "..new_dir)
   one_based_modulus(new_dir, 4) -- wrap around (4 directions)
   new_dir_str = compass[new_dir]
   setD(new_dir_str)
