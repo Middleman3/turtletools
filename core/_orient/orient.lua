@@ -1,5 +1,4 @@
 SETTINGS_PATH = "turtletools/.tt_settings"
-settings.load(SETTINGS_PATH)
 
 function query_coords()
   print("what's my x coordinate?")
@@ -15,12 +14,17 @@ end
 
 function query_direction()
   print("which direction am I facing? (north, south, east, west)")
-  settings.set("H", read())
+  settings.set("D", read())
   settings.save(SETTINGS_PATH)
 end
 
-if not settings.get("H") then query_coords() end
-if not settings.get("D") then query_direction() end
+function init()
+  settings.load(SETTINGS_PATH)
+  if not settings.get("H") then query_coords() end
+  if not settings.get("D") then query_direction() end
+end
+
+init()
 
 -- sync with persistence
 function setD (direction)
