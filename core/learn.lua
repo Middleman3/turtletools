@@ -72,6 +72,7 @@ end
 going_up = _make_default(turtle.up, turtle.digUp, o_up)
 going_forward = _make_default(turtle.forward, turtle.dig, o_forward)
 going_down =_make_default(turtle.down, turtle.digDown, o_down)
+extra_stuff = "at least Im here..."
 
 -- Facing
 function turning_left()
