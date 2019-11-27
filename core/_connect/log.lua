@@ -18,11 +18,11 @@ function get_modem_side()
 end
 
 function init()
-    function init()
-        settings.load(SETTINGS_PATH)
-        if not get_modem_side() then query_modem_side() end
-    end
+    settings.load(SETTINGS_PATH)
+    if not get_modem_side() then query_modem_side() end
 end
+
+init()
 
 --[[
 function complain(message)
