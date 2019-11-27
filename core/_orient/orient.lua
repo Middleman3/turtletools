@@ -1,11 +1,13 @@
+settings.load(SETTINGS_PATH)
+
 -- sync with persistence
 function setD (direction)
   settings.set("D", direction)
-  settings.save(".settings")
+  settings.save(SETTINGS_PATH)
 end
 function setH(vectorToHome)
   settings.set("H", vectorToHome:tostring())
-  settings.save(".settings")
+  settings.save(SETTINGS_PATH)
 end
 function getH()
   H = settings.get("H")

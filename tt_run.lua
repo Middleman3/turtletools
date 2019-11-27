@@ -1,8 +1,8 @@
 args = {...}
 rel_prog = args[1]
 table.remove(args)
-compile_path = "/turtletools/compile"
-settings_path = "turtletools/.tt_settings"
+COMPILE_PATH = "/turtletools/compile"
+SETTINGS_PATH = "turtletools/.tt_settings"
 tester = "it still works!"
 
 if  table.getn(args) == 0 then print("Usage: trun <program> <args>") end
