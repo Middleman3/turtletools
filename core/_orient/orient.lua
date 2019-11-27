@@ -18,13 +18,6 @@ function query_direction()
   settings.save(SETTINGS_PATH)
 end
 
-function init()
-  settings.load(SETTINGS_PATH)
-  if not settings.get("H") then query_coords() end
-  if not getD() then query_direction() end
-end
-
-init()
 -- sync with persistence
 function getH()
   H = settings.get("H")
@@ -42,6 +35,14 @@ function setH(vectorToHome)
   settings.set("H", vectorToHome:tostring())
   settings.save(SETTINGS_PATH)
 end
+
+function init()
+  settings.load(SETTINGS_PATH)
+  if not settings.get("H") then query_coords() end
+  if not getD() then query_direction() end
+end
+
+init()
 
 -- map directions
 compass = {"west", "north", "east", "south"}
