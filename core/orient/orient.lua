@@ -35,41 +35,52 @@ function indexOf(array, element)
 end
 
 -- Movement
-function o_right()
+function turn_helper(num)
   dir_str = settings.get("D")
+  if not dir_str then return false, "corrupted settings" end
   dir = indexOf(compass, dir_str)
-  new_dir = dir + 1 -- turn right
+  new_dir = dir + num
   one_based_modulus(new_dir, 4) -- wrap around (4 directions)
   new_dir_str = compass[new_dir]
   setD(new_dir_str)
+  return true
+end
+
+function o_right()
+  return turn_helper(1)
 end
 function o_left()
-  dir_str = settings.get("D")
-  dir = indexOf(compass, dir_str)
-  new_dir = dir - 1 -- turn left
-  if new_dir == 0 then new_dir = 4 end -- wrap around (1 based modulus)
-  new_dir_str = compass[new_dir]
-  setD(new_dir_str)
+  return turn_helper(-1)
 end
 function o_up()
   H = getH()
+  if not H then return false, "corrupted settings" end
   setH(H:add(vector.new(0, 1, 0)))
+  return true
 end
 function o_down()
   H = getH()
+  if not H then return false, "corrupted settings" end
   setH(H:add(vector.new(0, -1, 0)))
+  return true
 end
 function o_forward()
   D = getD()
   H = getH()
+  if not D then return false, "corrupted settings" end
+  if not H then return false, "corrupted settings" end
   dir_vector = compass_vectors[indexOf(compass, D)]
   setH(H:add(dir_vector))
+  return true
 end
 function o_back()
   D = getD()
   H = getH()
+  if not D then return false, "corrupted settings" end
+  if not H then return false, "corrupted settings" end
   dir_vector = compass_vectors[indexOf(compass, D)]
   setH(H:sub(dir_vector))
+  return true
 end
 function o_report()
   return "at " .. settings.get("H") .. " facing " .. settings.get("D")
