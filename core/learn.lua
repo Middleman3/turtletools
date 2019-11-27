@@ -2,15 +2,19 @@
 -- Steady
 
     -- Logical
-function determined(troubleshoot_cb, movement_cb)
+function determined(troubleshoot_cb, primary_cb)
     return function()
-        successful, error_code = movement_cb()
+        print("trying something")
+        successful, error_code = primary_cb()
         if not successful then -- Attempt to move, return if successful
+            print("it didn't work, so trying to fix it")
             if not troubleshoot_cb(error_code) then
+                print("couldn't fix it")
                 log.complain(error_code)
             else -- troubleshoot_cb worked
-                if not movement_cb() then
-                    log.complain("Unknown reason for inability to move!")
+                print("I think I fixed it...")
+                if not primary_cb() then
+                    print("still didn't work... ")
                 end
             end
         end
@@ -20,7 +24,9 @@ end
 
 function by(...)
     return function()
-        for i, funct in ipairs(arg) do funct() end
+        for i, funct in ipairs(arg) do
+            print("then I shall")
+            funct() end
     end
 end
 
@@ -33,6 +39,7 @@ end
     -- Looping
 function traversing_the(count, primary_cb, transition_cb)
     return function()
+        print("time to traverse this thing")
         if count == 0 then return end
         if not primary_cb() then return false end
         for i=0, count - 1 do
@@ -88,6 +95,7 @@ end
 -- Directional
 function leftward(callback)
     return function ()
+        print("turning left")
         turning_left()
         callback()
         turning_right()
@@ -95,6 +103,7 @@ function leftward(callback)
 end
 function rightward(callback)
     return function ()
+        print("turning right")
         turning_right()
         callback()
         turning_left()
@@ -102,6 +111,7 @@ function rightward(callback)
 end
 function backward(callback)
     return function ()
+        print("turning around")
         turning_left()
         turning_left()
         callback()
@@ -119,6 +129,7 @@ going_right = rightward(going_forward)
 
 function placingDown(material_id)
     return function()
+        print("Placing ".. material_id.. " down")
         result = findMy(material_id)
         if not result == -1 then
             turtle.placeDown()
@@ -128,6 +139,7 @@ end
 
 function placingUp(material_id)
     return function()
+        print("Placing ".. material_id.. " up")
         result = findMy(material_id)
         if not result == -1 then
             turtle.placeUp()
@@ -136,6 +148,7 @@ function placingUp(material_id)
 end
 function placing(material_id)
     return function()
+        print("Placing ".. material_id.. " in front of me")
         result = findMy(material_id)
         if not result == -1 then
             turtle.place()
