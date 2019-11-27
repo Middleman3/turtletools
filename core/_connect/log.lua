@@ -1,6 +1,13 @@
 SETTINGS_PATH = ".settings"
 info = print
-complain = error
+complain = function (message, detail)
+    tmp = term.getTextColor()
+    term.setTextColor(colors.orange)
+    info(message)
+    if detail then info(detail) end
+    term.setTextColor(tmp)
+end
+
 query = function(question)
     info(message)
     return read()
