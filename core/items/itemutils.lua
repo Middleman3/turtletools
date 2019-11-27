@@ -64,7 +64,7 @@ function findAny(itemIDs)
 end
 
 function refuel()
-  local tmp = turtle.getSelectedSlots()
+  local tmp = turtle.getSelectedSlot()
   local index = findMy(fuelTypes)
   if index == -1 then return false end
   turtle.select(index)
