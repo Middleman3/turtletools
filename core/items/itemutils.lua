@@ -50,7 +50,7 @@ function findMy(itemID)
   local tmp = turtle.getSelectedSlot()
   for i=1, 16 do
     turtle.select(i)
-    if imHolding(itemID) then return tmp end
+    if imHolding(itemID) then return i end
   end
   turtle.select(tmp)
   return -1
@@ -65,7 +65,7 @@ end
 
 function refuel()
   local tmp = turtle.getSelectedSlot()
-  local index = findMy(fuelTypes)
+  local index = findAny(fuelTypes)
   if index == -1 then return false end
   turtle.select(index)
   turtle.refuel(1)
