@@ -12,7 +12,7 @@ end]]
 
 saying = function(...)
     return function ()
-        print(unpack(arg3))
+        print(unpack(arg))
     end
 end
 
