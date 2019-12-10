@@ -1,9 +1,11 @@
 SETTINGS_PATH = ".settings"
 
 function colored(color, saying)
-    term.setTextColor(colors[color])
-    saying()
-    term.setTextColor(colors.white)
+    return function()
+        term.setTextColor(colors[color])
+        saying()
+        term.setTextColor(colors.white)
+    end
 end
 
 --[[function timestamped(saying)
