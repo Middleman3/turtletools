@@ -1,6 +1,8 @@
 status = {idle="Waiting for Command"}
 processes = {}
 
+
+
 while true do
     id, message = rednet.receive()
     -- TODO verify sender
