@@ -6,9 +6,13 @@ function colored(color, saying)
     term.setTextColor(colors.white)
 end
 
+--[[function timestamped(saying)
+
+end]]
+
 saying = function(...)
     return function ()
-        print(...)
+        print(unpack(arg3))
     end
 end
 
@@ -39,6 +43,7 @@ end
 function init()
     settings.load(SETTINGS_PATH)
     if not get_modem_side() then query_modem_side() end
+    rednet.open(get_modem_side())
 end
 
 init()
