@@ -26,7 +26,7 @@ complain = function (message, detail)
 end
 
 query = function(question)
-    colored("orange", saying(question))()
+    colored("purple", saying(question))()
     return read()
 end
 
