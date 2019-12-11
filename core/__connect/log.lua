@@ -12,22 +12,26 @@ end
 
 end]]
 
-saying = function(...)
+function saying(...)
     return function ()
         print(unpack(arg))
     end
 end
 
-complain = function (message, detail)
+function complain (message, detail)
     term.setTextColor(colors.orange)
     print(message)
     if detail then info(detail) end
     term.setTextColor(colors.white)
 end
 
-query = function(question)
+function query(question)
     colored("purple", saying(question))()
     return read()
+end
+
+function info(...)
+    colored("lightBlue", saying(unpack(...)))
 end
 
 function query_modem_side()
