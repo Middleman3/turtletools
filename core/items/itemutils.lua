@@ -69,6 +69,16 @@ function findAny(itemIDs)
   return -1
 end
 
+function dump(ignored_items)
+  local tmp = turtle.getSelectedSlot()
+  for i=0, 16 do
+    turtle.select(i)
+    name = identify()
+    if ignored_items[name] == nil then turtle.drop() end
+  end
+  turtle.select(tmp)
+end
+
 function refuel_fallback()
   local tmp = turtle.getSelectedSlot()
   local index = findAny(fuelTypes)
