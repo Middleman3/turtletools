@@ -10,8 +10,6 @@ local compile_only = table.getn(args) == 0
 os.loadAPI("/turtletools/import.lua")
 import.load_dir("turtletools/core")
 
--- Spill modules
-import.spill(learn)
 
 if not compile_only then
     print("\nSearching for " .. rel_prog)

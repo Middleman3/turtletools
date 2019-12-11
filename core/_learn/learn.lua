@@ -206,10 +206,12 @@ function placing(id)
             result = findMy(id)
             if result ~= -1 then
                 log.info("Placing ".. id .. " down")
-                turtle.place()
-                return true
+                success, error = turtle.place()
+                turtle.select(result)
+                return success, error
             else
                 log.complain("Out of " .. id)
+                turtle.select(result)
                 return false, "Item not found"
             end
         end

@@ -1,0 +1,8 @@
+Folders in core are loaded in alphabetical order due to how fs.list works. As a workaround, loading sequence is managed
+by grouping folders and ordering the groups. Folders in the same group do not depend on each other. Later groups depend on
+functions found in earlier groups. the latest group has no pre-appended _underscores. Folders in the earliest group have the most
+pre-appended _underscores.
+
+When a group access methods of another group, they must use the format <filename>.<function>. If you want to, you can avoid this by
+spilling the packages at compile time. This can be done by adding a line in the import.check_for_spills function. The 'learn' package
+is spilled by default. All you need to know is the full path of the package (Hint: run tt, and it'll print the full paths as it imports).
