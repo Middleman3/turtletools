@@ -31,7 +31,7 @@ function query(question)
 end
 
 function info(...)
-    colored("lightBlue", saying(unpack(...)))
+    colored("lightBlue", saying(unpack(arg)))
 end
 
 function query_modem_side()
