@@ -167,7 +167,7 @@ function placing_helper(id, cb)
         end
     end
 end
-function placing(id) placing_helper(id, turtle.place) end
-function placingUp(id) placing_helper(id, turtle.placeUp) end
-function placingDown(id) placing_helper(id, turtle.placeDown) end
+function placing(id) return placing_helper(id, turtle.place) end
+function placingUp(id) return placing_helper(id, turtle.placeUp) end
+function placingDown(id) return placing_helper(id, turtle.placeDown) end
 
