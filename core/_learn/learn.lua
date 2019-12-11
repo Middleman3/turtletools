@@ -70,12 +70,12 @@ function as_long_as(condition_cb, primary_cb)
     end
 end
 
+-- TODO Add Error Checking and Reporting here
 function go(callback, ...)
     return callback(unpack(arg))
 end
 
 -- Movement
-
 function get_def_mv_trbst(dig_func)
     return function(error_code)
         if not error_code then log.complain("There's no error code")
@@ -206,9 +206,9 @@ function placing(id)
             result = findMy(id)
             if result ~= -1 then
                 log.info("Placing ".. id .. " down")
-                success, error = turtle.place()
+                success, error_code = turtle.place()
                 turtle.select(result)
-                return success, error
+                return success, error_code
             else
                 log.complain("Out of " .. id)
                 turtle.select(result)

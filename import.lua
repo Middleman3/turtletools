@@ -1,3 +1,9 @@
+
+spill_list = {}
+
+spill_list["turtletools/core/_learn/learn.lua"] = "learn"
+spill_list["turtletools/core/steady/steady.lua"] = "steady"
+
 -- spills elements of this package into _G, so package.element -> element
 function spill(package)
     for symbol, value in pairs(package) do
@@ -8,7 +14,8 @@ end
 
 -- duplicate a line for any package you want to spill at compile time
 function check_for_spills(path)
-    if path == "turtletools/core/_learn/learn.lua" then spill(learn) end
+    package = spill_list[path]
+    if package then spill(package) end
 end
 
 function load(path)

@@ -69,7 +69,7 @@ function findAny(itemIDs)
   return -1
 end
 
-function refuel_fallback()
+function refuel()
   local tmp = turtle.getSelectedSlot()
   local index = findAny(fuelTypes)
   if index == -1 then return false, "Out of fuel" end
@@ -77,10 +77,4 @@ function refuel_fallback()
   turtle.refuel(1)
   turtle.select(tmp)
   return true
-end
-
-function refuel()
-  go(prepared_to(turtle.dig, placing("enderstorage:ender_storage")))
-  go(traversing_the(bucket_count, by(placing("minecraft:bucket"), turtle.refuel)))
-  turtle.dig()
 end
