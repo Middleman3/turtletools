@@ -2,7 +2,8 @@ fuelTypes = {"minecraft:lava_bucket", "minecraft:coal", "ic2:crafting"}
 bucket_count = 4
 
 function identify(index)
-  return turtle.getItemDetail(index)["name"]
+  details = turtle.getItemDetail(index)
+  if details then return details["name"] else return "empty" end
 end
 
 function getInventory()
