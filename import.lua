@@ -15,7 +15,7 @@ end
 -- duplicate a line for any package you want to spill at compile time
 function check_for_spills(path)
     package = spill_list[path]
-    if package then spill(package) end
+    if package then spill(_G[package]) end
 end
 
 function load(path)
