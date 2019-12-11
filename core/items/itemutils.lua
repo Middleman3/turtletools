@@ -71,7 +71,7 @@ end
 
 function dump(ignored_items)
   local tmp = turtle.getSelectedSlot()
-  for i=0, 16 do
+  for i=1, 16 do
     turtle.select(i)
     name = identify()
     if ignored_items[name] == nil then turtle.drop() end
